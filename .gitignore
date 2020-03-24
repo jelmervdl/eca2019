@@ -1,0 +1,8 @@
+*.idx
+*.ilg
+*.ind
+*.aux
+*.log
+*.toc
+eca2019proceedings.pdf
+papers-with-names.tex
