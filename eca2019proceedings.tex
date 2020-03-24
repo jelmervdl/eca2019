@@ -1,0 +1,213 @@
+\documentclass[a4paper,oneside]{book}
+\usepackage[utf8x,utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{paralist}
+\usepackage{tocloft}
+\usepackage{imakeidx}
+\usepackage[hidelinks]{hyperref}
+\usepackage[open,openlevel=1]{bookmark}
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+%\usepackage[colorlinks]{hyperref}
+
+\makeindex[name=authors,title=Index of Authors]
+
+\makeatletter
+\let\origps@plain\ps@plain
+\newcommand\MakePlainPagestyleEmpty{\let\ps@plain\ps@empty}
+\newcommand\MakePlainPagestylePlain{\let\ps@plain\origps@plain}
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}% Clear page header/footer
+\renewcommand{\headrulewidth}{0pt}% No header rule
+\fancyfoot[C]{\thepage}
+
+\newcommand{\insertmydocument}[4]%
+           { % Syntax: \insertmydocument{Toc level}{Title}{Subtitle}{File}
+             % Requires: tocloft hyperref pdfpages
+             \newpage
+             \phantomsection
+             \cftaddtitleline{toc}{#1}{#2}{\thepage}
+             \cftchapterprecistoc{#3}
+            \includepdf[pages=-,pagecommand={\pagestyle{fancy}}]{#4}
+           }
+
+\makeindex
+
+\begin{document}
+
+\frontmatter
+\includepdf[pages=1-,pagecommand={\thispagestyle{empty}}]{layout/cover}
+\setcounter{page}{1}
+\includepdf[pages=1-,pagecommand={\thispagestyle{empty}}]{layout/firstpages}
+
+\section*{Committees}
+	\addcontentsline{toc}{chapter}{Committees}
+	\subsection*{General chairs}
+	\begin{compactitem}[]
+	\item[] Bart Verheij
+	\item[] Marco Wiering
+	\end{compactitem}
+
+
+	\subsection*{Contact \& administration}
+	\begin{compactitem}[]
+	\item[] Elina Sietsema
+	\item[] Carlijne de Vries
+	\item[] Sarah van Wouwe
+	\end{compactitem}
+
+	\subsection*{Local organisation}
+	\begin{compactitem}[]
+		\item[] Luca Bandelli
+		\item[] Abe Brandsma
+		\item[] Tomasz Darmetko
+		\item[] Mingcheng Ding
+		\item[] Ana Dugeniuc
+		\item[] Joel During
+		\item[] Ameer Islam
+		\item[] Siebert Looije
+		\item[] Ren\'e Mellema
+		\item[] Michaela Mr\`azkov\'a
+		\item[] Annet Onnes
+		\item[] Benjamin Shafrey
+		\item[] Sjaak ten Caat
+		\item[] Albert Thie
+		\item[] Jelmer van der Linde
+		\item[] Luuk van Keeken
+		\item[] Paul Veldhuyzen
+		\item[] Randy Wind
+		\item[] Galiya Yeshmagambetova
+	\end{compactitem}
+
+	\subsection*{Program committee}
+	\begin{compactitem}[]
+		\item[] Stylianos Asteriadis, Maastricht University
+		\item[] Reyhan Aydogan, Delft University of Technology
+		\item[] Floris Bex, Utrecht University
+		\item[] Michael Biehl, University of Groningen
+		\item[] Mauro Birattari, Universit\'e Libre de Bruxelles
+		\item[] Hendrik Blockeel, Katholieke Universiteit Leuven
+		\item[] Hans L. Bodlaender, Utrecht University
+		\item[] Sander Bohte, Centrum Wiskunde \& Informatica (CWI)
+		\item[] Peter Bosman, Centrum Wiskunde \& Informatica (CWI)
+		\item[] Tibor Bosse, Vrije Universiteit Amsterdam
+		\item[] Bruno Bouzy, Paris Descartes University
+		\item[] Frances Brazier, Delft University of Technology
+		\item[] Bert Bredeweg, University of Amsterdam
+		\item[] Tristan Cazenave, Universit\'e Paris Dauphine
+		\item[] Tom Claassen, Radboud University Nijmegen
+		\item[] Walter Daelemans, University of Antwerp
+		\item[] Gregoire Danoy, University of Luxembourg
+		\item[] Mehdi Dastani, Utrecht University
+		\item[] Patrick De Causmaecker, Katholieke Universiteit Leuven
+		\item[] Martine De Cock, University of Washington Tacoma
+		\item[] Mathijs De Weerdt, Delft University of Technology
+		\item[] Beno\^it Depaire, Hasselt University
+		\item[] Frank Dignum, Utrecht University
+		\item[] Virginia Dignum, Delft University of Technology
+		\item[] Kurt Driessens, Maastricht University
+		\item[] Madalina Drugan, Technical University of Eindhoven
+		\item[] Sjur Dyrkolbotn, Western Norway University of Applied Sciences
+		\item[] Jason Farquhar, Radboud University Nijmegen
+		\item[] Ad Feelders, Utrecht University
+		\item[] Bart Goethals, University of Antwerp
+		\item[] Pascal Gribomont, University of Liège
+		\item[] Perry Groot, Radboud University Nijmegen
+		\item[] Marc Gyssens, Universiteit Hasselt
+		\item[] Frank Harmsen, Ernst \& Young Advisory
+		\item[] Maaike Harbers, Rotterdam University of Applied Sciences
+		\item[] Tom Heskes, Radboud University Nijmegen
+		\item[] Koen Hindriks, Delft University of Technology
+		\item[] Arjen Hommersom, Open University of the Netherlands
+		\item[] Mark Hoogendoorn, Vrije Universiteit Amsterdam
+		\item[] Gerda Janssens, Katholieke Universiteit Leuven
+		\item[] Maurits Kaptein, Eindhoven University of Technology
+		\item[] Uzay Kaymak, Eindhoven University of Technology
+		\item[] Walter Kosters, Leiden University
+		\item[] Johan Kwisthout, Radboud University Nijmegen
+		\item[] Tom Lenaerts, Université Libre de Bruxelles
+		\item[] Marco Loog, Delft University of Technology
+		\item[] Peter Lucas, Radboud University
+		\item[] Elena Marchiori, Radboud University Nijmegen
+		\item[] Wannes Meert, Katholieke Universiteit Leuven
+		\item[] John-Jules Meyer, Utrecht University
+		\item[] Peter Nov\'ak, Delft University of Technology
+		\item[] Ann Now\'e, Vrije Universiteit Brussel
+		\item[] Aske Plaat, Leiden University
+		\item[] Eric Postma, Tilburg University
+		\item[] Henry Prakken, University of Utrecht, University of Groningen
+		\item[] Jan Ramon, INRIA
+		\item[] Silja Renooij, Utrecht University
+		\item[] Nico Roos, Maastricht University
+		\item[] Stefan Schlobach, Vrije Universiteit Amsterdam
+		\item[] Pierre-Yves Schobbens, University of Namur
+		\item[] Johannes Scholtes, Maastricht University
+		\item[] Lambert Schomaker, University of Groningen
+		\item[] Martijn Schut, Universiteit van Amsterdam
+		\item[] Evgueni Smirnov, Maastricht University
+		\item[] Matthijs T. J. Spaan, Delft University of Technology
+		\item[] Gerasimos Spanakis, Maastricht University
+		\item[] Jennifer Spenader, University of Groningen
+		\item[] Ida Sprinkhuizen-Kuyper, Radboud University Nijmegen
+		\item[] Thomas Stützle, Universit\'e Libre de Bruxelles
+		\item[] Johan Suykens, Katholieke Universiteit Leuven
+		\item[] Niels Taatgen, University of Groningen
+		\item[] Annette Ten Teije, Vrije Universiteit Amsterdam
+		\item[] Dirk Thierens, Utrecht University
+		\item[] Karl Tuyls, University of Liverpool
+		\item[] Antal van den Bosch, Radboud University Nijmegen
+		\item[] Egon L. van den Broek, Utrecht University
+		\item[] Jaap van den Herik, Leiden University
+		\item[] Linda van der Gaag, Utrecht University
+		\item[] Peter van der Putten, Leiden University, Pegasystems
+		\item[] Leon van der Torre, University of Luxembourg
+		\item[] Natalie van der Wal, Vrije Universiteit Amsterdam
+		\item[] Tim van Erven, Leiden University
+		\item[] Marcel van Gerven, Radboud University Nijmegen
+		\item[] Frank van Harmelen, Vrije Universiteit Amsterdam
+		\item[] Martijn van Otterlo, Vrije Universiteit Amsterdam
+		\item[] M. Birna van Riemsdijk, Delft University of Technology
+		\item[] Maarten van Someren, University of Amsterdam
+		\item[] Marieke van Vugt, University of Groningen
+		\item[] Menno van Zaanen, Tilburg University
+		\item[] Joaquin Vanschoren, Eindhoven University of Technology
+		\item[] Marina Velikova, Radboud University Nijmegen
+		\item[] Remco Veltkamp, Utrecht University
+		\item[] Joost Vennekens, Katholieke Universiteit Leuven
+		\item[] Katja Verbeeck, Technologiecampus Gent
+		\item[] Rineke Verbrugge, University of Groningen
+		\item[] Michel Verleysen, Universit\'e Catholique de Louvain
+		\item[] Sicco Verwer, Delft University of Technology
+		\item[] Arnoud Visser, Universiteit van Amsterdam
+		\item[] Willem Waegeman, Ghent University
+		\item[] Martijn Warnier, Delft University of Technology
+		\item[] Gerhard Weiss, Maastricht University
+		\item[] Floris Wiesman, Academic Medical Center Amsterdam
+		\item[] Jef Wijsen, University of Mons
+		\item[] Mark H. M. Winands, Maastricht University
+		\item[] Radboud Winkels, Universiteit van Amsterdam
+		\item[] Cees Witteveen, Delft University of Technology
+		\item[] Marcel Worring, University of Amsterdam
+		\item[] Yingqian Zhang, Eindhoven University of Technology
+	\end{compactitem}
+
+\include{preface}
+
+\newpage
+\pdfbookmark[chapter]{Table of Contents}{toc}
+\tableofcontents
+
+\mainmatter
+\MakePlainPagestyleEmpty
+
+\include{papers-with-names}
+
+\printindex[authors]
+
+\includepdf[pages=1-,pagecommand={\thispagestyle{empty}}]{layout/back}
+
+\end{document}
