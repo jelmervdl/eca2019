@@ -33,12 +33,12 @@ if __name__ == '__main__':
 		match = pattern.match(line)
 		if match:
 			for author in parse_authors(match.group('authors')):
-				print('\index[authors]{{{0}, {1}}}'.format(*author))
-			print('\pdfbookmark[chapter]{{{section}}}{{paper-{id}}}'.format(
+				print(r'\index[authors]{{{0}, {1}}}'.format(*author))
+			print(r'\pdfbookmark[chapter]{{{section}}}{{paper-{id}}}'.format(
 				section=match.group('title'),
 				id=parse_filename(match.group('file'))))
 		print(line)
 		if match:
 			print("")
 		
-	print("Done! Don't forget to enable imakeidx:\n  \usepackage{imakeidx}\n  \makeindex[name=authors,title=Index of Authors,options=-r]", file=sys.stderr)
+	print(r"Done! Don't forget to enable imakeidx:\n  \usepackage{imakeidx}\n  \makeindex[name=authors,title=Index of Authors,options=-r]", file=sys.stderr)
