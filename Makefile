@@ -1,6 +1,9 @@
-.PHONY: all open
+.PHONY: all clean open
 
 all: eca2019proceedings.pdf
+
+clean:
+	rm -f *.idx *.ilg *.ind *.log *.aux *.toc eca2019proceedings.pdf papers-with-names.tex
 
 open: eca2019proceedings.pdf
 	open eca2019proceedings.pdf
