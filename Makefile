@@ -1,3 +1,5 @@
+ENGINE=lualatex
+
 .PHONY: all clean open
 
 all: eca2019proceedings.pdf
@@ -12,6 +14,6 @@ papers-with-names.tex: papers.tex authors.py
 	python3 authors.py < papers.tex > papers-with-names.tex
 
 eca2019proceedings.pdf: eca2019proceedings.tex papers-with-names.tex
-	pdflatex ./eca2019proceedings.tex
-	pdflatex ./eca2019proceedings.tex # for TOC and bookmarks
+	$(ENGINE) ./eca2019proceedings.tex
+	$(ENGINE) ./eca2019proceedings.tex # for TOC and bookmarks
 
