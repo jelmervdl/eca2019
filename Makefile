@@ -13,7 +13,7 @@ open: eca2019proceedings.pdf
 papers-with-names.tex: papers.tex authors.py
 	python3 authors.py < papers.tex > papers-with-names.tex
 
-eca2019proceedings.pdf: eca2019proceedings.tex papers-with-names.tex
+eca2019proceedings.pdf: eca2019proceedings.tex papers-with-names.tex preface.tex
 	$(ENGINE) ./eca2019proceedings.tex
 	$(ENGINE) ./eca2019proceedings.tex # for TOC and bookmarks
 
