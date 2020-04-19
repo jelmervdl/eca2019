@@ -1,0 +1,25 @@
+#!/bin/bash
+cat | osascript - "$@" << EOF
+on run input
+	tell application id "com.microsoft.Word"
+		activate
+		repeat with aFile in input
+			open aFile
+			set theOutputPath to ((aFile as text) & ".pdf")
+			tell active document
+				set allSections to every section
+				repeat with theSection in allSections
+					set theFooters to {get footer theSection index header footer primary} & {get footer theSection index header footer first page} & {get footer theSection index header footer even pages}
+
+					repeat with theFooter in theFooters
+						set theRange to text object of theFooter
+						set content of theRange to ""
+					end repeat
+				end repeat
+				save as it file name theOutputPath file format format PDF
+				close saving no
+			end tell
+		end repeat
+	end tell
+end run
+EOF
