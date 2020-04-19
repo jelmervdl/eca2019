@@ -43,7 +43,9 @@
 
 \frontmatter
 \includepdf[pages=1-,pagecommand={\thispagestyle{empty}}]{layout/cover}
-\setcounter{page}{1}
+
+\renewcommand{\thepage}{\roman{page}}
+\setcounter{page}{5}
 
 \include{prep}
 \include{preface}
@@ -53,8 +55,12 @@
 \pdfbookmark[chapter]{Table of Contents}{toc}
 \tableofcontents
 
+
 \mainmatter
 \MakePlainPagestyleEmpty
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{1}
+
 
 \include{papers-with-names}
 
