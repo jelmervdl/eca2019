@@ -42,7 +42,7 @@
 \begin{document}
 
 \frontmatter
-\includepdf[pages=1-,pagecommand={\thispagestyle{empty}}]{layout/cover}
+\includepdf[pages=1-,pagecommand={\thispagestyle{empty}}]{layout/cover-vol-2}
 
 \renewcommand{\thepage}{\roman{page}}
 \setcounter{page}{5}
@@ -55,14 +55,12 @@
 \pdfbookmark[chapter]{Table of Contents}{toc}
 \tableofcontents
 
-
 \mainmatter
 \MakePlainPagestyleEmpty
 \renewcommand{\thepage}{\arabic{page}}
 \setcounter{page}{1}
 
-
-\include{papers-with-names}
+\include{papers-vol-2-with-names}
 
 \printindex[authors]
 
