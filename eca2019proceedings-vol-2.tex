@@ -21,6 +21,7 @@
 \let\origps@plain\ps@plain
 \newcommand\MakePlainPagestyleEmpty{\let\ps@plain\ps@empty}
 \newcommand\MakePlainPagestylePlain{\let\ps@plain\origps@plain}
+\renewcommand{\@tocrmarg}{\@pnumwidth plus1fil} % <-- Revised
 \makeatother
 
 \pagestyle{fancy}
@@ -35,7 +36,7 @@
              \phantomsection
              \cftaddtitleline{toc}{#1}{#2}{\thepage}
              \cftchapterprecistoc{#3}
-            \includepdf[pages=-,pagecommand={\pagestyle{fancy}}]{#4}
+             \includepdf[pages=-,pagecommand={\pagestyle{fancy}}]{#4}
            }
 
 \makeindex
