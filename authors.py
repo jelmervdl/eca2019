@@ -2,6 +2,7 @@
 from __future__ import print_function
 import re
 import sys
+import locale
 
 pattern = re.compile(r'^\\insertmydocument\{chapter\}\{(?P<title>.+?)\}\{(?P<authors>.+?)\}\{(?P<file>.+?)\}(?P<comment>\s*%.*)?$')
 
@@ -30,6 +31,11 @@ def parse_filename(filename):
 	return match.group('type') + '-' + match.group('id')
 
 
+def sortable_str(latex):
+	plain_text = re.sub(r'\\.\{(.+?)\}', '\\1', latex)
+	return locale.strxfrm(plain_text)
+
+
 if __name__ == '__main__':
 	try:
 		for line in sys.stdin:
@@ -37,7 +43,7 @@ if __name__ == '__main__':
 			match = pattern.match(line)
 			if match:
 				for author in parse_authors(match.group('authors')):
-					print(r'\index[authors]{{{0}, {1}}}'.format(*author))
+					print(r'\index[authors]{{{1}@{0}}}'.format(', '.join(author), sortable_str(', '.join(author))))
 				print(r'\pdfbookmark[chapter]{{{section}}}{{paper-{id}}}'.format(
 					section=match.group('title'),
 					id=parse_filename(match.group('file'))))
