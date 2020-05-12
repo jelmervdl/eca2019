@@ -1,0 +1,78 @@
+\documentclass[a4paper,twoside]{book}
+\usepackage[utf8x,utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{paralist}
+\usepackage{tocloft}
+\usepackage{imakeidx}
+\usepackage[hidelinks]{hyperref}
+\usepackage[open,openlevel=1]{bookmark}
+\usepackage{fontspec}
+\setmainfont{Cambria}
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\cftsetpnumwidth{2em}
+
+%\usepackage[colorlinks]{hyperref}
+
+\makeindex[name=authors,title=Index of Authors]
+
+\makeatletter
+\let\origps@plain\ps@plain
+\newcommand\MakePlainPagestyleEmpty{\let\ps@plain\ps@empty}
+\newcommand\MakePlainPagestylePlain{\let\ps@plain\origps@plain}
+\renewcommand{\@tocrmarg}{\@pnumwidth plus1fil} % <-- Revised
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}% Clear page header/footer
+\renewcommand{\headrulewidth}{0pt}% No header rule
+\fancyfoot[LE,RO]{\thepage} % Page at left on even and right on odd pages
+
+\newcommand{\insertmydocument}[4]%
+           { % Syntax: \insertmydocument{Toc level}{Title}{Subtitle}{File}
+             % Requires: tocloft hyperref pdfpages
+             \cleardoublepage%
+             \phantomsection%
+             \cftaddtitleline{toc}{#1}{#2}{\thepage}%
+             \cftchapterprecistoc{#3}%
+             \includepdf[pages=-,pagecommand={\pagestyle{fancy}}]{#4}%
+           }
+
+\makeindex
+
+\begin{document}
+
+\frontmatter
+\includepdf[pages=1-,pagecommand={\thispagestyle{empty}}]{layout/cover-vol-3}
+
+\renewcommand{\thepage}{\roman{page}}
+\setcounter{page}{5}
+
+\include{prep}
+
+\cleardoublepage
+\include{preface}
+
+\cleardoublepage
+\include{keynotes}
+
+\cleardoublepage
+\pdfbookmark[chapter]{Table of Contents}{toc}
+\tableofcontents
+
+\cleardoublepage
+\mainmatter
+\MakePlainPagestyleEmpty
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{1}
+
+\cleardoublepage
+\include{papers-vol-3-with-names}
+
+\cleardoublepage
+\printindex[authors]
+
+\includepdf[pages=1-,pagecommand={\thispagestyle{empty}}]{layout/back}
+
+\end{document}
