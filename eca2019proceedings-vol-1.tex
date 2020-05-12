@@ -32,7 +32,7 @@
 \newcommand{\insertmydocument}[4]%
            { % Syntax: \insertmydocument{Toc level}{Title}{Subtitle}{File}
              % Requires: tocloft hyperref pdfpages
-             \newpage% \cleardoublepage
+             \cleardoublepage%
              \phantomsection%
              \cftaddtitleline{toc}{#1}{#2}{\thepage}%
              \cftchapterprecistoc{#3}%
