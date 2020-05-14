@@ -42,14 +42,15 @@ if __name__ == '__main__':
 			line = line.rstrip()
 			match = pattern.match(line)
 			if match:
+				print('\\insertmydocument{{chapter}}{{{title}}}{{{authors}}}{{{file}}}{{%'.format(**match.groupdict()))
 				for author in parse_authors(match.group('authors')):
-					print(r'\index[authors]{{{1}@{0}}}'.format(', '.join(author), sortable_str(', '.join(author))))
-				print(r'\pdfbookmark[chapter]{{{section}}}{{paper-{id}}}'.format(
+					print(r'\index[authors]{{{1}@{0}}}%'.format(', '.join(author), sortable_str(', '.join(author))))
+				print('\\pdfbookmark[chapter]{{{section}}}{{paper-{id}}}%'.format(
 					section=match.group('title'),
 					id=parse_filename(match.group('file'))))
-			print(line)
-			if match:
-				print("")
+				print('}}{comment}'.format(**match.groupdict()))
+			else:
+				print(line)
 		print(r"Done! Don't forget to enable imakeidx:\n  \usepackage{imakeidx}\n  \makeindex[name=authors,title=Index of Authors,options=-r]", file=sys.stderr)
 	except ValueError as e:
 		print(e, file=sys.stderr)
