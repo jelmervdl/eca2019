@@ -1,6 +1,6 @@
 ENGINE=lualatex
 
-.PHONY: all clean open
+.PHONY: all clean
 
 all: eca2019proceedings-vol-1.pdf eca2019proceedings-vol-2.pdf eca2019proceedings-vol-3.pdf
 

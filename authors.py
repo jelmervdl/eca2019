@@ -48,7 +48,7 @@ if __name__ == '__main__':
 				print('\\pdfbookmark[chapter]{{{section}}}{{paper-{id}}}%'.format(
 					section=match.group('title'),
 					id=parse_filename(match.group('file'))))
-				print('}}{comment}'.format(**match.groupdict()))
+				print('}}{comment}'.format(comment=match.group('comment') or ''))
 			else:
 				print(line)
 		print(r"Done! Don't forget to enable imakeidx:\n  \usepackage{imakeidx}\n  \makeindex[name=authors,title=Index of Authors,options=-r]", file=sys.stderr)
